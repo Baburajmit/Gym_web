@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FUSION GYM | Transform Your Body</title>
+  <meta name="description" content="Premium fitness studio. Join the most energetic gym with world-class trainers, smart programs, and real transformations.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Montserrat', sans-serif;
+      background-color: #0A0A0A;
+      color: #F0F0F0;
+      scroll-behavior: smooth;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #FF4D2E, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .glass-card {
+      background: rgba(20, 20, 30, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 77, 46, 0.25);
+      border-radius: 1.5rem;
+    }
+    .hover-glow:hover {
+      box-shadow: 0 0 20px rgba(255, 77, 46, 0.4);
+      transition: all 0.3s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(95deg, #FF4D2E, #FF8C42);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(255, 77, 46, 0.3);
+    }
+    .stat-number {
+      font-weight: 800;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #FFF, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .testimonial-slider {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .testimonial-slider > div {
+      scroll-snap-align: start;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1E1E2A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FF4D2E;
+      border-radius: 10px;
+    }
+    input, textarea, select {
+      background: #1F1F2E;
+      border: 1px solid #333;
+      color: white;
+      border-radius: 12px;
+      padding: 12px 16px;
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #FF4D2E;
+      box-shadow: 0 0 0 2px rgba(255, 77, 46, 0.3);
+    }
+    .mobile-menu {
+      transition: all 0.3s ease-in-out;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .program-card, .trainer-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .program-card:hover, .trainer-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -15px rgba(255, 77, 46, 0.3);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- STICKY NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 py-3 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="text-2xl font-extrabold tracking-tighter"><span class="gradient-text">FUSION</span> GYM</div>
+      <div class="hidden md:flex space-x-8 font-medium">
+        <a href="#home" class="hover:text-[#FF4D2E] transition">Home</a>
+        <a href="#about" class="hover:text-[#FF4D2E] transition">About</a>
+        <a href="#services" class="hover:text-[#FF4D2E] transition">Programs</a>
+        <a href="#trainers" class="hover:text-[#FF4D2E] transition">Trainers</a>
+        <a href="#pricing" class="hover:text-[#FF4D2E] transition">Pricing</a>
+        <a href="#transformations" class="hover:text-[#FF4D2E] transition">Transformations</a>
+        <a href="#contact" class="hover:text-[#FF4D2E] transition">Contact</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hidden md:block border border-[#FF4D2E] px-5 py-2 rounded-full hover:bg-[#FF4D2E]/20 transition">Login</a>
+        <a href="#" class="btn-primary px-5 py-2 rounded-full text-white font-semibold">Join Now</a>
+        <button id="menuBtn" class="md:hidden text-2xl focus:outline-none"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu fixed top-[72px] left-0 w-full bg-black/95 backdrop-blur-xl border-b border-white/10 py-6 px-6 flex flex-col space-y-5 text-lg font-medium hidden">
+      <a href="#home" class="hover:text-[#FF4D2E]">Home</a>
+      <a href="#about" class="hover:text-[#FF4D2E]">About</a>
+      <a href="#services" class="hover:text-[#FF4D2E]">Programs</a>
+      <a href="#trainers" class="hover:text-[#FF4D2E]">Trainers</a>
+      <a href="#pricing" class="hover:text-[#FF4D2E]">Pricing</a>
+      <a href="#transformations" class="hover:text-[#FF4D2E]">Transformations</a>
+      <a href="#contact" class="hover:text-[#FF4D2E]">Contact</a>
+      <div class="pt-2"><a href="#" class="border border-[#FF4D2E] px-5 py-2 rounded-full inline-block text-center">Login</a></div>
+    </div>
+  </nav>
+
+  <main class="pt-20">
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50">
+          <source src="https://videos.pexels.com/video-files/4497322/4497322-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/70"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center md:text-left">
+        <h1 class="text-5xl md:text-7xl font-black leading-tight">Transform Your Body, <br><span class="gradient-text">Transform Your Life</span></h1>
+        <p class="text-xl md:text-2xl mt-6 text-gray-300 max-w-2xl mx-auto md:mx-0">Elite coaching, cutting-edge equipment, and a community that fuels greatness.</p>
+        <div class="flex flex-wrap gap-5 justify-center md:justify-start mt-10">
+          <a href="#" class="btn-primary px-8 py-4 rounded-full text-lg font-bold shadow-xl">Join Now <i class="fas fa-arrow-right ml-2"></i></a>
+          <a href="#" class="border-2 border-white/40 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition">Start Free Trial</a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 bg-black/40 backdrop-blur-sm p-6 rounded-3xl border border-white/10 max-w-4xl mx-auto md:mx-0">
+          <div class="text-center"><div class="stat-number text-4xl md:text-5xl" data-target="850">0</div><p class="uppercase tracking-wide text-sm mt-1">Active Members</p></div>
+          <div class="text-center"><div class="stat-number text-4xl md:text-5xl" data-target="32">0</div><p class="uppercase tracking-wide text-sm mt-1">Expert Trainers</p></div>
+          <div class="text-center"><div class="stat-number text-4xl md:text-5xl" data-target="24">0</div><p class="uppercase tracking-wide text-sm mt-1">Programs</p></div>
+          <div class="text-center"><div class="stat-number text-4xl md:text-5xl" data-target="1200">0</div><p class="uppercase tracking-wide text-sm mt-1">Transformations</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROGRAMS SECTION - FIXED JSX SYNTAX -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-14"><h2 class="text-4xl md:text-5xl font-bold">Elite <span class="gradient-text">Programs</span></h2><div class="w-24 h-1 bg-gradient-to-r from-[#FF4D2E] to-[#FF8C42] mx-auto mt-3 rounded-full"></div></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="programsGrid"></div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="py-24 px-6 bg-black/40 border-y border-white/10">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div><img src="https://images.pexels.com/photos/4162451/pexels-photo-4162451.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="gym interior" class="rounded-2xl shadow-2xl border border-white/10 w-full object-cover h-[450px]"></div>
+        <div><span class="text-[#FF4D2E] font-semibold tracking-wider">OUR STORY</span><h2 class="text-4xl md:text-5xl font-bold mt-3">Built for <span class="gradient-text">Warriors</span></h2><p class="text-gray-300 mt-5 leading-relaxed">FUSION GYM isn't just a place to lift — it's a movement. With state-of-the-art equipment, elite recovery zones, and a tribe that pushes you beyond limits, we redefine fitness. Since 2018, we've been transforming lives through passion and science.</p><div class="mt-8 flex gap-5"><div><i class="fas fa-check-circle text-[#FF4D2E] text-xl"></i><p class="font-semibold mt-1">Smart Workout Plans</p></div><div><i class="fas fa-check-circle text-[#FF4D2E] text-xl"></i><p class="font-semibold mt-1">Personal Coaching</p></div></div><a href="#" class="inline-block mt-8 btn-primary px-6 py-3 rounded-full font-semibold">Discover More</a></div>
+      </div>
+    </section>
+
+    <!-- TRAINERS SECTION - FIXED JSX SYNTAX -->
+    <section id="trainers" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-14"><h2 class="text-4xl md:text-5xl font-bold">Meet <span class="gradient-text">Elite Coaches</span></h2><p class="text-gray-400 mt-3">World-class athletes & certified experts</p></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" id="trainersGrid"></div>
+    </section>
+
+    <!-- PRICING PLANS -->
+    <section id="pricing" class="py-24 px-6 bg-black/30">
+      <div class="max-w-7xl mx-auto"><div class="text-center mb-14"><h2 class="text-4xl md:text-5xl font-bold">Unlock Your <span class="gradient-text">Potential</span></h2></div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass-card p-8 rounded-2xl"><h3 class="text-2xl font-bold">Basic</h3><div class="mt-4 text-4xl font-black">$49<span class="text-base font-normal text-gray-400">/month</span></div><ul class="mt-6 space-y-3"><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> Access to gym floor</li><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> Group classes (2x/week)</li><li><i class="fas fa-times text-gray-500 mr-2"></i> Personal trainer</li></ul><a href="#" class="mt-8 block text-center border border-white/20 py-3 rounded-full hover:bg-white/10">Choose Plan</a></div>
+        <div class="glass-card p-8 rounded-2xl border-t-4 border-[#FF4D2E] relative"><div class="absolute -top-4 right-6 bg-[#FF4D2E] px-4 py-1 rounded-full text-sm font-bold">🔥 MOST POPULAR</div><h3 class="text-2xl font-bold">Pro Elite</h3><div class="mt-4 text-4xl font-black">$89<span class="text-base font-normal text-gray-400">/month</span></div><ul class="mt-6 space-y-3"><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> Unlimited gym & classes</li><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> 2 Personal sessions/month</li><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> Nutrition guide + App</li></ul><a href="#" class="mt-8 block text-center btn-primary py-3 rounded-full font-bold">Start 7-day trial</a></div>
+        <div class="glass-card p-8 rounded-2xl"><h3 class="text-2xl font-bold">Unlimited</h3><div class="mt-4 text-4xl font-black">$129<span class="text-base font-normal text-gray-400">/month</span></div><ul class="mt-6 space-y-3"><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> Everything in Pro</li><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> Unlimited PT sessions</li><li><i class="fas fa-check text-[#FF4D2E] mr-2"></i> Sauna + recovery lounge</li></ul><a href="#" class="mt-8 block text-center border border-white/20 py-3 rounded-full hover:bg-white/10">Go Unlimited</a></div>
+      </div></div>
+    </section>
+
+    <!-- TRANSFORMATIONS / TESTIMONIALS SLIDER -->
+    <section id="transformations" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-12"><h2 class="text-4xl font-bold">Real <span class="gradient-text">Stories</span></h2><p class="text-gray-400">Incredible transformations from our tribe</p></div>
+      <div class="testimonial-slider flex gap-6 pb-6 overflow-x-auto hide-scrollbar snap-x" id="testimonialsSlider"></div>
+    </section>
+
+    <!-- BMI CALCULATOR + WORKOUT FILTERS -->
+    <section class="py-16 px-6 bg-gradient-to-r from-black to-gray-900">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+        <div class="glass-card p-8 rounded-2xl"><h3 class="text-2xl font-bold mb-4"><i class="fas fa-calculator text-[#FF4D2E] mr-2"></i> BMI Calculator</h3><div><input type="number" id="height" placeholder="Height (cm)" class="w-full mb-3"><input type="number" id="weight" placeholder="Weight (kg)" class="w-full mb-3"><button id="calcBMI" class="btn-primary w-full py-3 rounded-full font-semibold">Calculate</button><p id="bmiResult" class="mt-4 text-center text-lg font-semibold"></p></div><div class="mt-4"><p class="text-xs text-gray-400">Underweight <18.5 | Normal 18.5–24.9 | Overweight ≥25</p></div></div>
+        <div class="glass-card p-8 rounded-2xl"><h3 class="text-2xl font-bold mb-4"><i class="fas fa-filter text-[#FF4D2E] mr-2"></i> Workout Filter</h3><div class="flex flex-wrap gap-3"><button data-filter="all" class="filterBtn bg-white/10 px-4 py-2 rounded-full hover:bg-[#FF4D2E] transition">All</button><button data-filter="strength" class="filterBtn bg-white/10 px-4 py-2 rounded-full">Strength</button><button data-filter="cardio" class="filterBtn bg-white/10 px-4 py-2 rounded-full">Cardio</button><button data-filter="crossfit" class="filterBtn bg-white/10 px-4 py-2 rounded-full">CrossFit</button></div><div id="workoutList" class="mt-5 space-y-3"><div class="workout-item strength bg-white/5 p-3 rounded-xl" data-cat="strength">🏋️‍♂️ Deadlift Max Program</div><div class="workout-item strength bg-white/5 p-3 rounded-xl" data-cat="strength">💪 Upper Body Hypertrophy</div><div class="workout-item cardio bg-white/5 p-3 rounded-xl" data-cat="cardio">🏃 20 min HIIT Treadmill</div><div class="workout-item cardio bg-white/5 p-3 rounded-xl" data-cat="cardio">🚴 Cycling Endurance</div><div class="workout-item crossfit bg-white/5 p-3 rounded-xl" data-cat="crossfit">⚡ WOD: Fran</div><div class="workout-item crossfit bg-white/5 p-3 rounded-xl" data-cat="crossfit">🔥 Rope Climbs + Box Jumps</div></div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div><h2 class="text-4xl font-bold">Get In <span class="gradient-text">Touch</span></h2><p class="text-gray-400 mt-2">Ready to start? Book a free tour or ask anything</p><form id="contactForm" class="mt-8 space-y-5"><input type="text" placeholder="Full Name" id="name" required class="w-full"><input type="email" placeholder="Email Address" id="email" required class="w-full"><textarea rows="4" placeholder="Your message..." id="msg" required class="w-full"></textarea><button type="submit" class="btn-primary px-8 py-3 rounded-full font-semibold w-full">Send Message <i class="fas fa-paper-plane ml-2"></i></button><p id="formFeedback" class="text-sm text-green-400"></p></form><a href="https://wa.me/1234567890?text=Hello%20I%27m%20interested%20in%20gym%20membership" target="_blank" class="inline-flex items-center gap-2 mt-5 bg-[#25D366] px-5 py-2 rounded-full hover:scale-105 transition"><i class="fab fa-whatsapp text-xl"></i> Chat on WhatsApp</a></div>
+        <div class="rounded-2xl overflow-hidden h-80 md:h-auto glass-card p-2"><iframe class="w-full h-full rounded-xl" src="https://maps.google.com/maps?q=New%20York%20Central%20Park&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <div class="bg-gradient-to-r from-[#FF4D2E] to-[#FF8C42] mx-6 md:mx-12 rounded-3xl p-8 md:p-12 text-center mb-16"><h3 class="text-3xl md:text-4xl font-black">Limited Offer: 7 Days Free + Personal Session</h3><p class="text-white/90 mt-2">Join before this month ends and get exclusive merch</p><a href="#" class="inline-block mt-6 bg-black text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition">Claim Free Trial →</a></div>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm">© 2025 FUSION GYM — Built for warriors. All rights reserved.</footer>
+
+  <script>
+    // Programs Data
+    const programs = [
+      { title: "Strength", icon: "fas fa-dumbbell", desc: "Build raw power & muscle mass with advanced lifting protocols" },
+      { title: "Cardio Burn", icon: "fas fa-heartbeat", desc: "High-intensity endurance & fat loss" },
+      { title: "Weight Loss", icon: "fas fa-chart-line", desc: "Scientifically designed fat melting programs" },
+      { title: "CrossFit", icon: "fas fa-bolt", desc: "Functional fitness for elite performance" }
+    ];
+
+    // Trainers Data
+    const trainers = [
+      { name: "Marcus Chen", role: "Strength & Conditioning", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+      { name: "Sofia Ramirez", role: "Nutrition & Weight Loss", img: "https://randomuser.me/api/portraits/women/44.jpg" },
+      { name: "David O'Neil", role: "CrossFit Specialist", img: "https://randomuser.me/api/portraits/men/52.jpg" },
+      { name: "Elena Voss", role: "Yoga & Mobility", img: "https://randomuser.me/api/portraits/women/68.jpg" }
+    ];
+
+    // Testimonials Data
+    const testimonials = [
+      { text: "Lost 32lbs in 4 months! The coaches are world-class and the energy keeps you coming back.", name: "Jessica M.", rating: 5, img: "https://randomuser.me/api/portraits/women/79.jpg" },
+      { text: "CrossFit program changed my life. I feel stronger, more confident, and part of a family.", name: "Mike T.", rating: 5, img: "https://randomuser.me/api/portraits/men/45.jpg" },
+      { text: "From zero to marathon ready. Best decision ever — the nutrition guidance is top tier.", name: "Priya K.", rating: 5, img: "https://randomuser.me/api/portraits/women/33.jpg" }
+    ];
+
+    // Render Programs
+    function renderPrograms() {
+      const programsGrid = document.getElementById('programsGrid');
+      if (programsGrid) {
+        programsGrid.innerHTML = programs.map(program => `
+          <div class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer program-card">
+            <i class="${program.icon} text-4xl text-[#FF4D2E] mb-5"></i>
+            <h3 class="text-2xl font-bold mb-3">${program.title}</h3>
+            <p class="text-gray-400">${program.desc}</p>
+            <div class="mt-6 inline-flex items-center text-[#FF8C42] font-medium">Learn more <i class="fas fa-chevron-right ml-2 text-sm"></i></div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Render Trainers
+    function renderTrainers() {
+      const trainersGrid = document.getElementById('trainersGrid');
+      if (trainersGrid) {
+        trainersGrid.innerHTML = trainers.map(trainer => `
+          <div class="glass-card rounded-2xl overflow-hidden transition-all hover:-translate-y-2 trainer-card">
+            <img src="${trainer.img}" class="w-full h-72 object-cover transition duration-500 hover:scale-105" alt="${trainer.name}">
+            <div class="p-5">
+              <h3 class="text-xl font-bold">${trainer.name}</h3>
+              <p class="text-[#FF8C42] text-sm">${trainer.role}</p>
+              <div class="flex gap-4 mt-4 text-gray-400">
+                <i class="fab fa-instagram hover:text-[#FF4D2E] cursor-pointer"></i>
+                <i class="fab fa-twitter hover:text-[#FF4D2E] cursor-pointer"></i>
+                <i class="fab fa-linkedin-in hover:text-[#FF4D2E] cursor-pointer"></i>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Render Testimonials
+    function renderTestimonials() {
+      const slider = document.getElementById('testimonialsSlider');
+      if (slider) {
+        slider.innerHTML = testimonials.map(t => `
+          <div class="min-w-[300px] md:min-w-[400px] glass-card p-7 rounded-2xl flex-shrink-0">
+            <i class="fas fa-quote-left text-3xl text-[#FF4D2E] opacity-50"></i>
+            <p class="mt-4 text-gray-200">“${t.text}”</p>
+            <div class="flex items-center gap-3 mt-6">
+              <img src="${t.img}" class="w-12 h-12 rounded-full object-cover">
+              <div>
+                <p class="font-bold">${t.name}</p>
+                <div class="flex text-[#FF8C42]">${'★'.repeat(t.rating)}</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          const target = document.querySelector(href);
+          if(target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+            if(mobileMenu) mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Animated stats
+    const stats = document.querySelectorAll('.stat-number');
+    const animateNumber = (el) => {
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const increment = target / 50;
+      const update = () => {
+        current += increment;
+        if(current < target) {
+          el.innerText = Math.floor(current);
+          requestAnimationFrame(update);
+        } else {
+          el.innerText = target;
+        }
+      };
+      update();
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          animateNumber(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    stats.forEach(stat => observer.observe(stat));
+
+    // BMI Calculator
+    const calcBtn = document.getElementById('calcBMI');
+    if(calcBtn) {
+      calcBtn.addEventListener('click', () => {
+        const height = parseFloat(document.getElementById('height').value);
+        const weight = parseFloat(document.getElementById('weight').value);
+        const bmiResult = document.getElementById('bmiResult');
+        
+        if(height && weight && height > 0) {
+          const heightM = height / 100;
+          const bmi = (weight / (heightM * heightM)).toFixed(1);
+          let category = '';
+          if(bmi < 18.5) category = 'Underweight';
+          else if(bmi <= 24.9) category = 'Normal weight';
+          else if(bmi <= 29.9) category = 'Overweight';
+          else category = 'Obese';
+          bmiResult.innerHTML = `BMI: ${bmi} (${category})`;
+          bmiResult.classList.add('text-[#FF8C42]');
+        } else {
+          bmiResult.innerHTML = 'Please enter valid height and weight';
+          bmiResult.classList.add('text-red-400');
+        }
+      });
+    }
+
+    // Workout filter system
+    const filterBtns = document.querySelectorAll('.filterBtn');
+    const workouts = document.querySelectorAll('.workout-item');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        workouts.forEach(w => {
+          if(filter === 'all' || w.dataset.cat === filter) {
+            w.style.display = 'block';
+          } else {
+            w.style.display = 'none';
+          }
+        });
+        // Update active button style
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-[#FF4D2E]', 'text-white');
+          b.classList.add('bg-white/10');
+        });
+        btn.classList.remove('bg-white/10');
+        btn.classList.add('bg-[#FF4D2E]', 'text-white');
+      });
+    });
+
+    // Set default active filter button
+    if(filterBtns.length > 0) {
+      filterBtns[0].classList.remove('bg-white/10');
+      filterBtns[0].classList.add('bg-[#FF4D2E]', 'text-white');
+    }
+
+    // Contact form validation
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const msg = document.getElementById('msg').value.trim();
+        const feedback = document.getElementById('formFeedback');
+        
+        if(name && email.includes('@') && msg) {
+          feedback.innerHTML = '✅ Message sent! We\'ll reach out soon.';
+          feedback.classList.add('text-green-400');
+          feedback.classList.remove('text-red-400');
+          contactForm.reset();
+          setTimeout(() => {
+            feedback.innerHTML = '';
+          }, 3000);
+        } else {
+          feedback.innerHTML = '❌ Please fill all fields correctly.';
+          feedback.classList.add('text-red-400');
+          feedback.classList.remove('text-green-400');
+        }
+      });
+    }
+
+    // Initialize all dynamic content
+    renderPrograms();
+    renderTrainers();
+    renderTestimonials();
+  </script>
+</body>
+</html>
